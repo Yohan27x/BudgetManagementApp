@@ -1,0 +1,7 @@
+from django.db import migrations, models
+from profiles.models import UserProfile, Wallet
+
+
+
+
+
