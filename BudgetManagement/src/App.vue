@@ -1,30 +1,11 @@
-<script>
-
-export default {
-  data() {
-    return {
-      
-    }
-  },
-  computed: {
-    
-  },
-  methods: {
-    
-  },
-}
-
-</script>
-
 <template>
 
-  <main>
+    <router-view/>
 
-    <p>Has published books:</p>
 
-  </main>
 
 </template>
+
 
 <style scoped>
 
