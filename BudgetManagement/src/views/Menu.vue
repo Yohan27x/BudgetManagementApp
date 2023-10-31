@@ -23,10 +23,11 @@ export default {
 
 
 <template>
-
     <NavBar></NavBar>
+
     <router-link to="/categories">categories</router-link>
 
+    
 </template>
 
 

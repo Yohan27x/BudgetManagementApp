@@ -1,5 +1,4 @@
 
-  
 <script>
   export default {
     data() {
@@ -7,7 +6,6 @@
         posts: [],
       };
     },
-  
     methods: {
       async getData() {
         try {
@@ -18,7 +16,6 @@
         }
       },
     },
-  
     created() {
       this.getData();
     },
@@ -34,4 +31,4 @@
         <p>{{ post.body }}</p>
       </ul>
     </div>
-  </template>
+</template>
