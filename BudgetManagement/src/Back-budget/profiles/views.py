@@ -5,6 +5,9 @@ from .permissions import IsOwnerOrReadOnly
 from rest_framework.authtoken.models import Token
 from core.models import User
 from .serializers import UserRegistrationSerializer
+from .models import Wallet
+from .serializers import WalletSerializer
+
 
 class UserProfileDetailView(generics.RetrieveUpdateAPIView):
     queryset = UserProfile.objects.all()
@@ -21,3 +24,15 @@ class UserRegistrationView(generics.CreateAPIView):
 
 
 # Add more views as needed for creating, updating, or listing user profiles
+
+# profile/views.py
+
+
+
+class WalletListCreateView(generics.ListCreateAPIView):
+    queryset = Wallet.objects.all()
+    serializer_class = WalletSerializer
+
+class WalletRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Wallet.objects.all()
+    serializer_class = WalletSerializer

@@ -2,12 +2,14 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.conf import settings
 
+
 class UserProfile(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    # Add fields for user-specific data, such as budgets, spending categories, etc.
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    budget = models.OneToOneField('budget.Budget', on_delete=models.SET_NULL, null=True, blank=True)
+    
 
     def __str__(self):
-        return self.user.username
+        return self.user.email
     
 
 class Wallet(models.Model):

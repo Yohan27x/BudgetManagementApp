@@ -3,7 +3,6 @@ from django.db import models
 from django.core.validators import MinValueValidator
 from django.conf import settings
 from django.conf import settings
-from profiles.models import UserProfile
 
 
 class Budget(models.Model):
@@ -34,7 +33,7 @@ class SpendingCategory(models.Model):
 
 
 class Expense(models.Model):
-    user_profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name='expenses')  # Adding ForeignKey to UserProfile
+    user_profile = models.ForeignKey('profiles.UserProfile', on_delete=models.SET_NULL, related_name='expenses_for_user', null=True)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     description = models.TextField(blank=True, null=True)
     date = models.DateField()
@@ -44,10 +43,10 @@ class Expense(models.Model):
         return f"{self.amount} - {self.category.name}"
     
     def save(self, *args, **kwargs):
-        # If this expense is being created for the first time
-        if not self.pk:
+        # If this expense is being created for the first time and has a user_profile attached
+        if not self.pk and self.user_profile:
             # Deduct the expense amount from the user's wallet
-            wallet = self.user.wallet
+            wallet = self.user_profile.wallet
             wallet.balance -= self.amount
             wallet.save()
         super(Expense, self).save(*args, **kwargs)

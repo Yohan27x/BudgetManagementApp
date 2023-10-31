@@ -45,6 +45,9 @@ class UserProfileSerializer(serializers.ModelSerializer):
 
     
 
-
+class WalletSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Wallet
+        fields = '__all__'
 
 
