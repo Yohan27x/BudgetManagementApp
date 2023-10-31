@@ -31,6 +31,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'django_cron',
+    'rest_framework.authtoken',
+    'profiles',
     'budget',
     'core',
     'wallet',
@@ -98,6 +101,14 @@ DATABASES =  {
     }
 
 }
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',  # Use Token authentication
+        'rest_framework.authentication.SessionAuthentication',  # Use Session authentication (for web browsers)
+    ),
+}
+
 
 
 # Password validation
