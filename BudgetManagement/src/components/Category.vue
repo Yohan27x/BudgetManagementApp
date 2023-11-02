@@ -26,13 +26,37 @@
 </script>
 
 <template>
-    <div>
-      <ul v-for="(category, index) in categories" :key="category.id">
-        <div v-if="index <= numCategories">
-          <p>{{ category.id }}</p>
-          <li>{{ category.name }}</li>
-          <p>{{ category.depense }}</p>
-        </div>
-      </ul>
-    </div>
+
+
+      <table>
+
+          <tr>
+            <th>Category</th>
+            <th>Desc</th>
+            <th>Price</th>
+          </tr>
+
+          <tr v-for="(category, index) in categories" :key="category.id">
+              <td>{{ category.id }}</td>
+              <td>{{ category.name }}</td>
+              <td>{{ category.depense }}</td>
+          </tr>
+
+      </table>
+      
+
 </template>
+
+<style scoped>
+
+
+table{
+  width:100%
+}
+
+td{
+  border: 1px solid black;
+  padding: 30px; 
+}
+
+</style>

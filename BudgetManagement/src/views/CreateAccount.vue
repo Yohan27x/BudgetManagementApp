@@ -72,7 +72,7 @@ export default{
 </template>
 
 
-<style>
+<style scoped>
 
 .create{
     margin-top: 30px;

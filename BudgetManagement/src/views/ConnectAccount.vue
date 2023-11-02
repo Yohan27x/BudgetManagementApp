@@ -58,7 +58,7 @@ export default{
 </template>
 
 
-<style>
+<style scoped>
 
 .connect{
     margin-top: 30px;

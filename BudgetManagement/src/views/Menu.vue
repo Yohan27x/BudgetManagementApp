@@ -43,23 +43,24 @@ export default {
   <div class="expenses">
 
     <h1>last expenses</h1>
-    <table>
-  <tr>
-    <th>Category</th>
-    <th>Desc</th>
-    <th>Price</th>
-  </tr>
-  <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Maria Anders</td>
-    <td>Germany</td>
-  </tr>
-  <tr>
-    <td>Centro comercial Moctezuma</td>
-    <td>Francisco Chang</td>
-    <td>Mexico</td>
-  </tr>
-</table>
+
+  <table>
+      <tr>
+        <th>Category</th>
+        <th>Desc</th>
+        <th>Price</th>
+      </tr>
+      <tr>
+        <td>Alfreds Futterkiste</td>
+        <td>Maria Anders</td>
+        <td>Germany</td>
+      </tr>
+      <tr>
+        <td>Centro comercial Moctezuma</td>
+        <td>Francisco Chang</td>
+        <td>Mexico</td>
+      </tr>
+  </table>
 
   </div>
 
@@ -141,9 +142,15 @@ div{
 
 }
 
-table, th, td {
-  border: 1px solid black;
+table{
+  width:100%
 }
+
+td{
+  border: 1px solid black;
+  padding: 30px; 
+}
+
 
 .piechart { 
             display: block; 
@@ -164,4 +171,7 @@ table, th, td {
         } 
 
 
+h1{
+  font-size: large;
+}
 </style>

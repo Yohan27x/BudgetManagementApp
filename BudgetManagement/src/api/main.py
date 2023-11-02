@@ -13,15 +13,28 @@ STUDENTS = {
 }
 
 CATEGORIES = {
-  '1' : {'name' : 'food', 'depense' : 200},
-  '2' : {'name' : 'videogames', 'depense' : 100},
-  '3' : {'name' : 'books', 'depense' : 500},
+  '1' : {'id' : '1', 'name' : 'food','depense' : 200},
+  '2' : {'id' : '2', 'name' : 'video games','depense' : 2000},
+  '3' : {'id' : '3', 'name' : 'clotehs','depense' : 400},
+  
+}
+
+CATEGORIES_NAME = {
+  '1' : {'name' : 'food'},
+  '2' : {'name' : 'video games'},
+  '3' : {'name' : 'clotehs'},
   
 }
 
 
 parser = reqparse.RequestParser();
 
+
+class CategoryName(Resource):
+  def get(self):
+    return CATEGORIES_NAME;
+
+api.add_resource(CategoryName, '/category-name/')
 
 class CategoryList(Resource):
 

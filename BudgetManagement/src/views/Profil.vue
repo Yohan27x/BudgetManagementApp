@@ -52,6 +52,8 @@ export default {
             <input v-model="password" placeholder="edit me" />
             <button>modify</button>
         </div>
+
+        <BButton variant="success">Button</BButton>
         
 
         <br>

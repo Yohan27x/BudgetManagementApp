@@ -19,6 +19,10 @@ export default {
 
 </template>
 
-<style>
+<style scoped>
+
+h1{
+  font-size: 300%;
+}
 
 </style>
