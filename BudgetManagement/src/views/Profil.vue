@@ -52,10 +52,16 @@ export default {
             <input v-model="password" placeholder="edit me" />
             <button>modify</button>
         </div>
+<<<<<<< HEAD
 
         <BButton variant="success">Button</BButton>
         
+=======
+>>>>>>> 7e29300e12967d31df07b8aa8d6bff03b304d383
 
+
+        <button>disconnect</button>
+        
         <br>
     </div>
     
