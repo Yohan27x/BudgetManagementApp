@@ -27,17 +27,6 @@ CATEGORIES_NAME = {
   
 }
 
-CATEGORIES =[{  
-  "id": "04",  
-  "name": "sunil",  
-  "depense": 40,
-},
-{
-"id": "05",  
-  "name": "moon",  
-  "depense": 700,
-}]
-
 CATEGORIES = {
   '1' : {'name' : 'food', 'depense' : 200},
   '2' : {'name' : 'videogames', 'depense' : 100},

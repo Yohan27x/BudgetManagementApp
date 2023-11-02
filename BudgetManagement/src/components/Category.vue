@@ -1,4 +1,5 @@
 <script>
+  import axios from 'axios'
   export default {
     props: {
       numCategories: Number,
@@ -11,7 +12,7 @@
     methods: {
       async getData() {
         try {
-          let response = await fetch("http://127.0.0.1:5000/category");
+          let response = await axios.get("http://127.0.0.1:8000/categories");
           this.categories = await response.json();;
         } catch (error) {
           console.log(error);
@@ -27,7 +28,6 @@
 
 <template>
 
-
       <table>
 
           <tr>
@@ -37,9 +37,8 @@
           </tr>
 
           <tr v-for="(category, index) in categories" :key="category.id">
-              <td>{{ category.id }}</td>
+              <td>{{ category.user_id }}</td>
               <td>{{ category.name }}</td>
-              <td>{{ category.depense }}</td>
           </tr>
 
       </table>

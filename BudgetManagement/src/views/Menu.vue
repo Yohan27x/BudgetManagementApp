@@ -2,6 +2,8 @@
 
 import Category from '@/components/Category.vue'
 
+import axios from 'axios'
+
 
 export default {
     components: {
@@ -9,7 +11,7 @@ export default {
     },
     data() {
         return {
-        
+          user : null
         }
     },
     computed: {
@@ -18,6 +20,11 @@ export default {
     methods: {
         
     },
+    async created(){
+      const response = await axios.get('http://127.0.0.1:8000/');
+
+      this.user = response.data;
+    }
 }
 
 </script>

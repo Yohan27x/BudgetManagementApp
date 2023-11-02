@@ -3,9 +3,24 @@
 export default{
     data(){
         return{
-            email: String,
+            username: String,
             password: String,
-            confirmPassword: String
+        }
+    },
+    async submit(){
+        try{
+            const response = await axios.post("http://127.0.0.1:8000/auth",{
+                username: this.username,
+                password: this.password
+            });
+
+            localStorage.setItem("token", response.data.token )
+            console.log(localStorage.getItem("token"))
+            
+
+            this.$router.push('menu')
+        } catch(error){
+            console.error(error)
         }
     },
     computed: {
@@ -30,12 +45,7 @@ export default{
 
 }
 
-
-
-
-
 </script>
-
 
 <template>
 
@@ -51,24 +61,12 @@ export default{
             <input v-model="password" placeholder="enter your password" />
         </div>
 
-        <div class="component">
-            <p>confirm Password: {{ confirmPassword }}</p>
-            <input v-model="confirmPassword" placeholder="enter your password" />
-        </div>
-
         <div class="create">
-            <button>Create Account</button>
+            <button @click="submit">Create Account f</button>
             <router-link to="/connect">already have an account ? </router-link>
         </div>
-        
-
-        
-        
-        
-        
     </div>
     
-
 </template>
 
 
