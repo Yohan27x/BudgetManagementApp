@@ -26,7 +26,6 @@
 </script>
 
 <template>
-<<<<<<< HEAD
 
 
       <table>
@@ -61,15 +60,3 @@ td{
 }
 
 </style>
-=======
-    <div>
-      <ul v-for="(category, index) in categories" :key="category.id">
-        <div v-if="index <= numCategories">
-          <p>{{ category.id }}</p>
-          <li>{{ category.name }}</li>
-          <p>{{ category.depense }}</p>
-        </div>
-      </ul>
-    </div>
-</template>
->>>>>>> 7e29300e12967d31df07b8aa8d6bff03b304d383

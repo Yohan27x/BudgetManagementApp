@@ -12,8 +12,7 @@ STUDENTS = {
   '4': {'name': 'Kate', 'age': 22, 'spec': 'science'},
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 CATEGORIES = {
   '1' : {'id' : '1', 'name' : 'food','depense' : 200},
   '2' : {'id' : '2', 'name' : 'video games','depense' : 2000},
@@ -28,7 +27,6 @@ CATEGORIES_NAME = {
   
 }
 
-=======
 CATEGORIES =[{  
   "id": "04",  
   "name": "sunil",  
@@ -39,8 +37,7 @@ CATEGORIES =[{
   "name": "moon",  
   "depense": 700,
 }]
->>>>>>> 7e29300e12967d31df07b8aa8d6bff03b304d383
-=======
+
 CATEGORIES = {
   '1' : {'name' : 'food', 'depense' : 200},
   '2' : {'name' : 'videogames', 'depense' : 100},
@@ -48,7 +45,6 @@ CATEGORIES = {
   
 }
 
->>>>>>> 6bef57048434890468e0d735f4844c6d6cc85a6b
 
 parser = reqparse.RequestParser();
 
