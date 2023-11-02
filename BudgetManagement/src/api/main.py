@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_restful import Resource, Api, reqparse
-import json
+
 
 app = Flask(__name__)
 api = Api(app)
@@ -12,16 +12,13 @@ STUDENTS = {
   '4': {'name': 'Kate', 'age': 22, 'spec': 'science'},
 }
 
-CATEGORIES =[{  
-  "id": "04",  
-  "name": "sunil",  
-  "depense": 40,
-},
-{
-"id": "05",  
-  "name": "moon",  
-  "depense": 700,
-}]
+CATEGORIES = {
+  '1' : {'name' : 'food', 'depense' : 200},
+  '2' : {'name' : 'videogames', 'depense' : 100},
+  '3' : {'name' : 'books', 'depense' : 500},
+  
+}
+
 
 parser = reqparse.RequestParser();
 
@@ -29,7 +26,7 @@ parser = reqparse.RequestParser();
 class CategoryList(Resource):
 
   def get(self):
-    return json.dumps(CATEGORIES, indent = 1)  ;
+    return CATEGORIES;
 
 
 api.add_resource(CategoryList, '/category/')

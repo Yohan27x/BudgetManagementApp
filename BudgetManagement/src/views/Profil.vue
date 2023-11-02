@@ -52,10 +52,8 @@ export default {
             <input v-model="password" placeholder="edit me" />
             <button>modify</button>
         </div>
-
-
-        <button>disconnect</button>
         
+
         <br>
     </div>
     
