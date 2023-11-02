@@ -1,10 +1,8 @@
 import { createApp } from 'vue'
 
 
-<<<<<<< HEAD
 =======
-
->>>>>>> 7e29300e12967d31df07b8aa8d6bff03b304d383
+>>>>>>> 6bef57048434890468e0d735f4844c6d6cc85a6b
 import App from './App.vue'
 
 import router from '@/router'
