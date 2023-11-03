@@ -12,7 +12,6 @@ STUDENTS = {
   '4': {'name': 'Kate', 'age': 22, 'spec': 'science'},
 }
 
-
 CATEGORIES = {
   '1' : {'id' : '1', 'name' : 'food','depense' : 200},
   '2' : {'id' : '2', 'name' : 'video games','depense' : 2000},
@@ -21,22 +20,57 @@ CATEGORIES = {
 }
 
 CATEGORIES_NAME = {
-  '1' : {'name' : 'food'},
-  '2' : {'name' : 'video games'},
-  '3' : {'name' : 'clotehs'},
+  'Food' : {'name' : 'Food'},
+  'Video Games' : {'name' : 'Video Games'},
+  'Books' : {'name' : 'Books'},
   
 }
 
 CATEGORIES = {
-  '1' : {'name' : 'food', 'depense' : 200},
-  '2' : {'name' : 'videogames', 'depense' : 100},
-  '3' : {'name' : 'books', 'depense' : 500},
-  
+  '1' : {'name' : 'Food', 'depense' : 200},
+  '2' : {'name' : 'Video Games', 'depense' : 100},
+  '3' : {'name' : 'Books', 'depense' : 500},
 }
 
+EXPENSES = {
+  '1' : {'id' : '1', 'category' : 'Food', 'desc' : "restaurant", 'price' : 200},
+  '2' : {'id' : '2','category' : 'Books', 'desc' : "library", 'price' : 200},
+  '3' : {'id' : '3','category' : 'Food', 'desc' : "market", 'price' : 200},
+  '4' : {'id' : '4','category' : 'Video Games', 'desc' : "MicroMania Fifa", 'price' : 200},
+}
+
+BUDGET = {
+  '1' : {'id' : '34', 'total' : 1000,},
+  '2' : {'id' : '15', 'total' : 3000,},
+}
 
 parser = reqparse.RequestParser();
 
+class BudgetList(Resource):
+  def get(self):
+    return BUDGET;
+
+  def post(self):
+        parser.add_argument('total', type=float, required=True)
+        args = parser.parse_args()
+        budget = {
+           'id' : '34', 'total': args['total']
+        }
+        BUDGET['4'] = budget
+        return {'message': 'Budget added successfully', 'budget': budget}, 201
+
+api.add_resource(BudgetList, '/budget/')
+
+
+class Budget(Resource):
+
+  def get(self, budget_id):
+    if budget_id not in BUDGET:
+      return "Not found", 404
+    else:
+      return BUDGET[budget_id]
+    
+api.add_resource(Budget, '/budget/<budget_id>')
 
 class CategoryName(Resource):
   def get(self):
@@ -44,11 +78,16 @@ class CategoryName(Resource):
 
 api.add_resource(CategoryName, '/category-name/')
 
+class Expenses(Resource):
+  def get(self):
+    return CATEGORIES_NAME;
+
+api.add_resource(Expenses, '/expenses/')
+
 class CategoryList(Resource):
 
   def get(self):
     return CATEGORIES;
-
 
 api.add_resource(CategoryList, '/category/')
 
@@ -72,9 +111,8 @@ class StudentsList(Resource):
     "age": args["age"],
     "spec": args["spec"],
     }
+
     return STUDENTS[student_id], 201
-
-
 
 api.add_resource(StudentsList, '/students/')
 
@@ -86,6 +124,7 @@ class Student(Resource):
       return STUDENTS[student_id]
     
   def put(self, student_id):
+
     parser.add_argument("name")
     parser.add_argument("age")
     parser.add_argument("spec")
@@ -98,13 +137,6 @@ class Student(Resource):
       student["age"] = args["age"] if args["age"] is not None else student["age"]
       student["spec"] = args["spec"] if args["spec"] is not None else student["spec"]
       return student, 200
-    
-  def delete(self, student_id):
-    if student_id not in STUDENTS:
-      return "Not found", 404
-    else:
-      del STUDENTS[student_id]
-      return '', 204
 
 
 api.add_resource(Student, '/students/<student_id>')

@@ -1,9 +1,9 @@
 <script>
 
 import Category from '@/components/Category.vue'
+import Expenses from '@/components/Expenses.vue'
 
 import axios from 'axios'
-
 
 export default {
     components: {
@@ -11,69 +11,64 @@ export default {
     },
     data() {
         return {
-          user : null
+          user : null,
+          budget : Number,
         }
     },
     computed: {
         
     },
     methods: {
-        
+      async UpdateBudget() {
+        axios.post('http://127.0.0.1:5000/budget/', {
+          total: 1000,
+        })
+        .then(function (response) {
+          console.log(response)
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
+      },
+      async getData() {
+        axios.get('http://127.0.0.1:5000/budget/1')
+        .then(response => {
+            this.budget = response.data;
+          })
+          .catch(error => {
+              console.log("error")
+          });
+      },
     },
-    async created(){
-      const response = await axios.get('http://127.0.0.1:8000/');
-
-      this.user = response.data;
+    created(){
+      this.getData();
     }
+    
 }
 
 </script>
 
-
-
 <template>
 
+<h1 class="welcome">Welcome to your Dashboard ! </h1>
 <main class="wrapper">
 
   <div id="col" class="budget">
-    <h1>budget</h1>
-    <h1>1000$</h1>
-    <button @click="$router.push('add-expense')">new expense</button>
+    <h1>Budget : <b>{{ this.budget["total"] }}$</b></h1>
+    <BButton  @click="$router.push('add-expense')" variant="light">Add expense</BButton>
   </div>
 
   <div class="categories">
-
     <Category numCategories="3" />
-   
   </div>
 
   <div class="expenses">
-
-    <h1>last expenses</h1>
-
-  <table>
-      <tr>
-        <th>Category</th>
-        <th>Desc</th>
-        <th>Price</th>
-      </tr>
-      <tr>
-        <td>Alfreds Futterkiste</td>
-        <td>Maria Anders</td>
-        <td>Germany</td>
-      </tr>
-      <tr>
-        <td>Centro comercial Moctezuma</td>
-        <td>Francisco Chang</td>
-        <td>Mexico</td>
-      </tr>
-  </table>
-
+    <Expenses numExpenses="3" />
   </div>
+
 
   <div class="stats">
     <div class="piechart"></div> 
-
   </div>
 </main>
 
@@ -82,6 +77,14 @@ export default {
 
 
 <style scoped>
+
+.welcome{
+  margin-left: 725px;
+  font-size: 210%;
+  margin-bottom: 50px;
+  margin-top: 50px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
 
 
 * {
@@ -95,20 +98,12 @@ export default {
 }
 
 .wrapper > div {
-  border: 2px solid rgb(233 171 88);
+  border: 2px solid rgb(25, 30,74);
   border-radius: 5px;
-  background-color: rgba(233 171 88 / 0.5);
+  background-color: rgba(141, 172, 202);
   padding: 1em;
-  color: #d9480f;
 }
 
-.wrapper > div {
-  border: 2px solid rgb(233 171 88);
-  border-radius: 5px;
-  background-color: rgba(233 171 88 / 0.5);
-  padding: 1em;
-  color: #d9480f;
-}
 
 .wrapper {
   display: grid;
@@ -134,6 +129,22 @@ export default {
   grid-row: 3/4;
 }
 
+.stats:hover{
+  border: 2px solid white;
+}
+
+.categories:hover{
+  border: 2px solid white;
+}
+
+.expenses:hover{
+  border: 2px solid white;
+}
+
+.budget:hover{
+  border: 2px solid white;
+}
+
 div{
     display: flex;
     justify-content: flex-start;
@@ -144,7 +155,9 @@ div{
 #col{
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: center;
+  
+    
     gap: 50px;
 
 }
@@ -178,7 +191,5 @@ td{
         } 
 
 
-h1{
-  font-size: large;
-}
+
 </style>

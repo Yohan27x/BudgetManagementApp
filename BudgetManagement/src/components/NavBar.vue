@@ -29,9 +29,9 @@ export default {
         <div id="menu" class="menu-selection">
             <img @click="isActive = !isActive" src="@/assets/MenuChoose.png" height="120" /> 
             <div class="under-menu">
-                <router-link @click="isActive = !isActive" to="/categories" :class="{ active: !isActive }">categories</router-link>
-                <router-link @click="isActive = !isActive" to="/expenses" :class="{ active: !isActive }">expenses</router-link>
-                <router-link @click="isActive = !isActive" to="/stats" :class="{ active: !isActive }">stats</router-link>
+                <router-link @click="isActive = !isActive" to="/categories" :class="{ active: !isActive }">Categories</router-link>
+                <router-link @click="isActive = !isActive" to="/expenses" :class="{ active: !isActive }">Expenses</router-link>
+                <router-link @click="isActive = !isActive" to="/stats" :class="{ active: !isActive }">Stats</router-link>
             </div>
             
             
@@ -55,6 +55,14 @@ export default {
 
 <style scoped>
 
+a { 
+    color: black;
+    text-decoration: none; 
+}
+
+a:hover{
+    color: rgb(145, 159, 207);
+}
 
 .under-menu{
     display: flex;

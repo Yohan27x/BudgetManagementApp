@@ -9,18 +9,14 @@ from auth import get_current_user
 import models
 from fastapi.responses import RedirectResponse
 
-
-
 app = FastAPI()
 app.include_router(auth.router)
 
 models.Base.metadata.create_all(bind=engine)
 
-
 class ChoiceBase(BaseModel):
     choice_text: str
     is_correct: bool
-
 
 class QuestionBase(BaseModel):
     question_text: str 
@@ -47,11 +43,6 @@ def get_db():
 
 db_dependency = Annotated[Session, Depends(get_db)]
 user_dependency = Annotated [dict, Depends (get_current_user)]
-
-
-
-
-
 
 
 # CRUD operations

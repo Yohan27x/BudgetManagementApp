@@ -5,8 +5,8 @@ import axios from 'axios'
 export default{
     data(){
         return{
-            username: " ",
-            password: " ",
+            username: '',
+            password: '',
         }
     },
     methods: {
@@ -25,6 +25,27 @@ export default{
             console.error(error)
         }
     },
+    fetchData() {
+      const url = 'http://127.0.0.1:8000/categories';
+      //const accessToken = '<your_access_token>';
+
+      axios.get(url, {
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer' + 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdHJpbmciLCJpZCI6MSwiZXhwIjoxNjk5MDE4MzQ1fQ.YEVcsi_fZhjdsMpeFNjKUkvZ4wDfG5AoTX_giuTWFPA'
+        }
+      })
+      .then(response => {
+        console.log(response.data);
+        // Process the response data here
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        // Handle errors here
+      });
+    }
+    
+    },
     computed: {
         username : {
             set(newValue){
@@ -40,11 +61,8 @@ export default{
         
 
     }
-    }
+    
 }
-
-
-
 
 
 
@@ -56,7 +74,7 @@ export default{
     <div class="main">
         <h1>connect to your account</h1>
         <div class="component">
-            <p>Email: {{ username }}</p>
+            <p>username: {{ username }}</p>
             <input v-model="username" placeholder="enter your email" />
         </div>
 
@@ -67,7 +85,7 @@ export default{
         
         
         <div class="connect">
-            <button @click="submit()">Connection</button>
+           <button @click="fetchData">connect</button>
         </div>
         
         

@@ -1,5 +1,7 @@
 <script>
   import axios from 'axios'
+  import { ref } from 'vue';
+  
   export default {
     props: {
       numCategories: Number,
@@ -10,9 +12,10 @@
       };
     },
     methods: {
-      async getData() {
+  
+    async getCategories() {
         try {
-          let response = await axios.get("http://127.0.0.1:8000/categories");
+          let response = await fetch("http://127.0.0.1:5000/category");
           this.categories = await response.json();;
         } catch (error) {
           console.log(error);
@@ -20,7 +23,7 @@
       },
     },
     created() {
-      this.getData();
+      this.getCategories();
     },
   };
 
@@ -31,18 +34,19 @@
       <table>
 
           <tr>
-            <th>Category</th>
-            <th>Desc</th>
-            <th>Price</th>
+            <th>Index</th>
+            <th>Name</th>
+            <th>Total spent</th>
           </tr>
 
           <tr v-for="(category, index) in categories" :key="category.id">
-              <td>{{ category.user_id }}</td>
-              <td>{{ category.name }}</td>
+              <td><b>{{ index }}</b></td>
+              <td><b>{{ category.name }}</b></td>
+              <td><b>{{ category.depense }}$</b></td>
           </tr>
 
       </table>
-      
+
 
 </template>
 
